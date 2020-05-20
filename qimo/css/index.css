@@ -1,0 +1,24 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.header{
+	width: 999px;
+	height: 100px;
+	background: white;
+	margin: 0 auto;
+	border: 1px solid #e5e5e5
+}
+.header .daohanglan{
+	width: 999px;
+	height: 25px;
+	background: white;
+	margin: 0 auto;
+	border: 1px solid #e5e5e5
+}
+.header .daohanglan .content{
+	font-family:"微软雅黑";
+	font-size: small;
+	font-style:normal;
+	font-weight: 500;
+}

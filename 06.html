@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			div {
+				width: 500px;
+				height: 200px;
+				overflow: hidden;
+				margin: 0 auto;
+				margin-top: 100px;
+				position: relative;
+			}
+
+			.p1 {
+				width: 2500px;
+				height: 200px;
+				list-style: none;
+
+				position: absolute;
+				top: 0;
+				left: 0;
+
+			}
+
+
+			.p1 li {
+				width: 500px;
+				height: 200px;
+				float: left;
+				font-size: 50px;
+				font-weight: 900;
+				text-align: center;
+				line-height: 200px;
+			}
+
+			.p1 li:nth-child(1) {
+				background: red;
+			}
+
+			.p1 li:nth-child(2) {
+				background: green;
+			}
+
+			.p1 li:nth-child(3) {
+				background: blue;
+			}
+
+			.p1 li:nth-child(4) {
+				background: purple
+			}
+
+			.p1 li:nth-child(5) {
+				background: red;
+			}
+
+			.p2 {
+				width: 105px;
+				height: 20px;
+				list-style: none;
+
+				position: absolute;
+				bottom: 3px;
+				
+				left: 50%;
+				margin-left: -50px;
+				
+			}
+
+			.p2 li {
+				float: left;
+				width: 20px;
+				height: 20px;
+				margin-left: 5px;
+				border-radius: 50%;
+				background: white;
+			}
+		</style>
+
+		<script src="js/jquery-3.4.1.min.js"></script>
+	</head>
+	<body>
+		<div>
+			<ul class="p1">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>1</li>
+			</ul>
+
+			<ul class="p2">
+				<li nn="0"></li>
+				<li nn="1"></li>
+				<li nn="2"></li>
+				<li nn="3"></li>
+			</ul>
+
+		</div>
+
+
+		<script>
+			$(function() {
+				var n = 0;
+				$(".p2 li").eq(0).css("background","#333");				
+				var timer=setInterval(bannershow, 5000);
+				$(".p2 li").on("mouseenter",pause);
+				$(".p2 li").on("mouseleave",resume);
+				
+				function bannershow() {
+					var aa = parseInt($(".p1").css("left"));
+					if (aa == -2000){
+						$(".p1").css("left", "0px");					
+					} 
+					else{
+						n=(n+1)%4;
+						$(".p2 li").css("background","white");
+						$(".p2 li").eq(n).css("background","#333");
+						$(".p1").animate({
+							"left": aa - 500 + 'px'
+						}, 1500);						
+					}
+					
+				}
+				
+				function pause(){
+					clearInterval(timer);
+					n=parseInt($(this).attr("nn"));
+					$(".p2 li").css("background","white");
+					$(".p2 li").eq(n).css("background","#333");
+					$(".p1").css("left", -500*n+'px');
+				}
+				
+				function resume(){
+					timer=setInterval(bannershow, 5000);
+				}
+
+			})
+		</script>
+	</body>
+</html>
